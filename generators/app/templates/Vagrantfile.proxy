@@ -1,0 +1,16 @@
+# The HTTP port can be chosen with the HTTP_PORT environment variable
+# e.g. by running "HTTP_PORT=3000 vagrant up"
+HTTP_PORT = ENV['HTTP_PORT'] || "8080"
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "hashicorp/precise64"
+
+  # Docker proxy
+  config.vm.provision "docker"
+  config.vm.provision "shell",
+    inline: "ps aux | grep 'sshd:' | awk '{print $2}' | xargs kill"
+
+  # web port
+  config.vm.network :forwarded_port, host: HTTP_PORT, guest: HTTP_PORT
+
+end

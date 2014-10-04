@@ -1,0 +1,10 @@
+{
+  "name": "generator-docker",
+  "version": "0.1.0",
+  "description": "Support tools for setting up Docker and Vagrant-driven Docker servers for your project",
+  "keywords": ["yeoman-generator"],
+  "dependencies": {
+    "yeoman-generator": "^0.17.3",
+    "yosay": "*"
+  }
+}
